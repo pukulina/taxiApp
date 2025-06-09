@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MessDetector">
+    <phpmd_settings>
+      <phpmd_by_interpreter asDefaultInterpreter="true" interpreter_id="cca27a03-7efc-4244-a1bc-d42896fb71c9" timeout="30000" />
+    </phpmd_settings>
+  </component>
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpCodeSniffer">
+    <phpcs_settings>
+      <phpcs_by_interpreter asDefaultInterpreter="true" interpreter_id="cca27a03-7efc-4244-a1bc-d42896fb71c9" timeout="30000" />
+    </phpcs_settings>
+  </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/taxi-app/vendor/fig/http-message-util" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/psr/http-server-handler" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/psr/http-server-middleware" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/slim/pdo" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/slim/slim" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/slim/psr7" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/composer" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/nikic/fast-route" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/taxi-app/vendor/phpunit/php-timer" />
+    </include_path>
+  </component>
+  <component name="PhpInterpreters">
+    <interpreters>
+      <interpreter id="8890eece-ddc6-4bde-bbc2-dda1602ce557" name="taxi-app-taxi-app-php:latest" home="docker://DATA" auto="false" debugger_id="php.debugger.XDebug">
+        <remote_data INTERPRETER_PATH="php" HELPERS_PATH="/opt/.phpstorm_helpers" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" DOCKER_ACCOUNT_NAME="Docker" DOCKER_IMAGE_NAME="taxi-app-taxi-app-php:latest" DOCKER_REMOTE_PROJECT_PATH="/opt/project" />
+      </interpreter>
+    </interpreters>
+  </component>
+  <component name="PhpInterpretersPhpInfoCache">
+    <phpInfoCache>
+      <interpreter name="taxi-app-taxi-app-php:latest">
+        <phpinfo binary_type="PHP" php_cli="/usr/local/bin/php" path_separator=":" version="8.3.19">
+          <additional_php_ini>/usr/local/etc/php/conf.d/docker-fpm.ini, /usr/local/etc/php/conf.d/docker-php-ext-pdo_pgsql.ini, /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini</additional_php_ini>
+          <configuration_file />
+          <configuration_options>
+            <configuration_option name="include_path" value=".:/usr/local/lib/php" />
+          </configuration_options>
+          <debuggers />
+          <loaded_extensions>
+            <extension name="Core" />
+            <extension name="PDO" />
+            <extension name="Phar" />
+            <extension name="Reflection" />
+            <extension name="SPL" />
+            <extension name="SimpleXML" />
+            <extension name="ctype" />
+            <extension name="curl" />
+            <extension name="date" />
+            <extension name="dom" />
+            <extension name="fileinfo" />
+            <extension name="filter" />
+            <extension name="hash" />
+            <extension name="iconv" />
+            <extension name="json" />
+            <extension name="libxml" />
+            <extension name="mbstring" />
+            <extension name="mysqlnd" />
+            <extension name="openssl" />
+            <extension name="pcre" />
+            <extension name="pdo_pgsql" />
+            <extension name="pdo_sqlite" />
+            <extension name="posix" />
+            <extension name="random" />
+            <extension name="readline" />
+            <extension name="session" />
+            <extension name="sodium" />
+            <extension name="sqlite3" />
+            <extension name="standard" />
+            <extension name="tokenizer" />
+            <extension name="xml" />
+            <extension name="xmlreader" />
+            <extension name="xmlwriter" />
+            <extension name="zlib" />
+          </loaded_extensions>
+        </phpinfo>
+      </interpreter>
+    </phpInfoCache>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.4" />
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/taxi-app/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+</project>

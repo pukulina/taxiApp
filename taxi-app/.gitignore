@@ -1,0 +1,19 @@
+# Ignore vendor dir (dependências do Composer)
+/vendor/
+
+# Ignorar arquivos específicos do sistema
+.DS_Store
+
+# Ignorar arquivos de configuração de IDE
+.idea/
+.vscode/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivo .env
+.env
+
+# Ignorar o arquivo de cache do PHPUnit
+.phpunit.result.cache
+

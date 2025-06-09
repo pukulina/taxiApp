@@ -1,0 +1,22 @@
+
+
+Esta sendo usado o microframework SLIM para agilizar o desenvolvimento.
+
+Dependencias úteis:
+        composer require vlucas/phpdotenv # Gerenciar variáveis de ambiente
+        composer require firebase/php-jwt # JWT para autenticação
+        composer require ramsey/uuid # Gerar UUIDs
+        composer require slim/pdo # Conectar ao PostgreSQL
+
+Estrutura de pastas
+        taxi-app/
+        ├── public/             # Arquivos públicos (ex: index.php)
+        ├── src/                # Código-fonte principal
+        │   ├── controllers/    # Controladores (ex: AccountController.php)
+        │   ├── models/         # Modelos do banco (ex: Account.php)
+        │   ├── repositories/   # Comunicação com banco (ex: AccountRepository.php)
+        │   ├── services/       # Regras de negócio (ex: AccountService.php)
+        │   ├── routes/         # Definição de rotas (ex: api.php)
+        │   ├── config/         # Configurações (ex: database.php, .env)
+        │   ├── middleware/     # Middlewares (ex: AuthMiddleware.php)
+        └── vendor/             # Dependências do Composer

@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  taxi-app-php:
+    build: .
+    container_name: taxi-app-php
+    restart: always
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - taxi-app-db
+    networks:
+      - taxi-app-network
+
+  taxi-app-nginx:
+    image: nginx:latest
+    container_name: taxi-app-nginx
+    restart: always
+    volumes:
+      - .:/var/www/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+    depends_on:
+      - taxi-app-php
+    networks:
+      - taxi-app-network
+
+  taxi-app-db:
+    image: postgres:15
+    container_name: taxi-app-db
+    restart: always
+    environment:
+      POSTGRES_DB: taxi_app
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - taxi-app-db-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - taxi-app-network
+
+  taxi-app-tests:
+    build: .
+    container_name: taxi-app-tests
+    depends_on:
+      - taxi-app-nginx
+    networks:
+      - taxi-app-network
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    entrypoint: [ "php", "./vendor/bin/phpunit" ]
+
+
+networks:
+  taxi-app-network:
+
+volumes:
+  taxi-app-db-data:
