@@ -16,7 +16,6 @@ class SignUpTest extends TestCase
 		$database = new database();
 		$pdo = $database->getConnection();
 		$accountRepository = new AccountRepository($pdo);
-		$accountRepository = new AccountRepository($pdo);
 		$this->signup = new SignUp($accountRepository);
 		$this->getAccount = new GetAccount($accountRepository);
 	}
@@ -114,4 +113,49 @@ class SignUpTest extends TestCase
 
 		$this->signup->handle($input);
 	}
+
+    public function testIsValidEmail(): void
+    {
+        $this->assertTrue($this->signup->isValidEmail('test@example.com'));
+        $this->assertTrue($this->signup->isValidEmail('user.name+tag@domain.co.uk'));
+        $this->assertFalse($this->signup->isValidEmail('invalid-email'));
+        $this->assertFalse($this->signup->isValidEmail('test@'));
+        $this->assertFalse($this->signup->isValidEmail('@domain.com'));
+        $this->assertFalse($this->signup->isValidEmail(''));
+    }
+
+    public function testIsValidName(): void
+    {
+        $this->assertTrue($this->signup->isValidName('John Doe'));
+        $this->assertTrue($this->signup->isValidName('Maria José da Silva'));
+        $this->assertTrue($this->signup->isValidName('José'));
+        $this->assertFalse($this->signup->isValidName('John123'));
+        $this->assertFalse($this->signup->isValidName('John@Doe'));
+        $this->assertFalse($this->signup->isValidName(''));
+        $this->assertFalse($this->signup->isValidName('123'));
+    }
+
+    public function testIsValidCarPlate(): void
+    {
+        $this->assertTrue($this->signup->isValidCarPlate('ABC1234'));
+        $this->assertTrue($this->signup->isValidCarPlate('XYZ9A87'));
+        $this->assertTrue($this->signup->isValidCarPlate('ABC-1234'));
+        $this->assertFalse($this->signup->isValidCarPlate('ABC123'));
+        $this->assertFalse($this->signup->isValidCarPlate('ABCD1234'));
+        $this->assertFalse($this->signup->isValidCarPlate('12345678'));
+        $this->assertFalse($this->signup->isValidCarPlate(''));
+    }
+
+    public function testShouldNotCreateWithMissingData(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Dados inválidos');
+
+        $input = [
+            'name' => 'John Doe',
+            'email' => 'john@example.com'
+        ];
+
+        $this->signup->handle($input);
+    }
 }
