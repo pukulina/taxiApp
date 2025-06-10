@@ -1,7 +1,7 @@
 <?php
 
 use AnnaBozzi\TaxiApp\Application\GetAccount;
-use AnnaBozzi\TaxiApp\Controllers\SignUp;
+use AnnaBozzi\TaxiApp\controllers\SignUp;
 use AnnaBozzi\TaxiApp\Repositories\AccountRepository;
 use PHPUnit\Framework\TestCase;
 use AnnaBozzi\TaxiApp\database;
@@ -13,9 +13,19 @@ class SignUpTest extends TestCase
 
 	protected function setUp(): void
 	{
-		$database = new database();
-		$pdo = $database->getConnection();
-		$accountRepository = new AccountRepository($pdo);
+		$pdo = new PDO('sqlite::memory:');
+		$pdo->exec("
+			CREATE TABLE account (
+				account_id TEXT PRIMARY KEY,
+				name TEXT NOT NULL,
+				email TEXT NOT NULL UNIQUE,
+				cpf TEXT NOT NULL,
+				car_plate TEXT,
+				is_passenger BOOLEAN NOT NULL DEFAULT 0,
+				is_driver BOOLEAN NOT NULL DEFAULT 0,
+				password TEXT NOT NULL
+			)
+		");
 		$accountRepository = new AccountRepository($pdo);
 		$this->signup = new SignUp($accountRepository);
 		$this->getAccount = new GetAccount($accountRepository);
@@ -110,6 +120,51 @@ class SignUpTest extends TestCase
 			'is_driver' => true,
 			'car_plate' => 'ABC123',
 			'password' => '123456'
+		];
+
+		$this->signup->handle($input);
+	}
+
+	public function testIsValidEmail(): void
+	{
+		$this->assertTrue($this->signup->isValidEmail('test@example.com'));
+		$this->assertTrue($this->signup->isValidEmail('user.name+tag@domain.co.uk'));
+		$this->assertFalse($this->signup->isValidEmail('invalid-email'));
+		$this->assertFalse($this->signup->isValidEmail('test@'));
+		$this->assertFalse($this->signup->isValidEmail('@domain.com'));
+		$this->assertFalse($this->signup->isValidEmail(''));
+	}
+
+	public function testIsValidName(): void
+	{
+		$this->assertTrue($this->signup->isValidName('John Doe'));
+		$this->assertTrue($this->signup->isValidName('Maria José da Silva'));
+		$this->assertTrue($this->signup->isValidName('José'));
+		$this->assertFalse($this->signup->isValidName('John123'));
+		$this->assertFalse($this->signup->isValidName('John@Doe'));
+		$this->assertFalse($this->signup->isValidName(''));
+		$this->assertFalse($this->signup->isValidName('123'));
+	}
+
+	public function testIsValidCarPlate(): void
+	{
+		$this->assertTrue($this->signup->isValidCarPlate('ABC1234'));
+		$this->assertTrue($this->signup->isValidCarPlate('XYZ9A87'));
+		$this->assertTrue($this->signup->isValidCarPlate('ABC-1234'));
+		$this->assertFalse($this->signup->isValidCarPlate('ABC123'));
+		$this->assertFalse($this->signup->isValidCarPlate('ABCD1234'));
+		$this->assertFalse($this->signup->isValidCarPlate('12345678'));
+		$this->assertFalse($this->signup->isValidCarPlate(''));
+	}
+
+	public function testShouldNotCreateWithMissingData(): void
+	{
+		$this->expectException(Exception::class);
+		$this->expectExceptionMessage('Dados inválidos');
+
+		$input = [
+			'name' => 'John Doe',
+			'email' => 'john@example.com'
 		];
 
 		$this->signup->handle($input);

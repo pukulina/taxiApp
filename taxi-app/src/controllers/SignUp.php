@@ -26,8 +26,13 @@ class SignUp {
 		}
 
 		return $this->accountRepository->createAccount(
-			$data['name'], $data['email'], $data['cpf'], $data['password'],
-			$data['is_passenger'] ?? false, $data['is_driver'] ?? false, $data['car_plate'] ?? null
+			$data['name'], 
+			$data['email'], 
+			$data['cpf'], 
+			$data['password'],
+			$data['car_plate'] ?? null, 
+			(bool)($data['is_passenger'] ?? false), 
+			(bool)($data['is_driver'] ?? false)
 		);
 	}
 

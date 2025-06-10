@@ -2,7 +2,8 @@
 
 namespace AnnaBozzi\TaxiApp\Controllers;
 
-use AnnaBozzi\TaxiApp\repositories\AccountRepository;
+use AnnaBozzi\TaxiApp\Repositories\AccountRepository;
+use AnnaBozzi\TaxiApp\controllers\SignUp;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -36,7 +37,7 @@ class AccountController {
 			return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
 		}
 
-		$account = $this->accountRepository->getByEmail($accountId);
+		$account = $this->accountRepository->getById($accountId);
 
 		if (!$account) {
 			$payload = json_encode(['error' => 'Conta não encontrada']);
@@ -47,5 +48,27 @@ class AccountController {
 		$response->getBody()->write(json_encode($account));
 		return $response->withHeader('Content-Type', 'application/json');
 
+	}
+
+	public function login(Request $request, Response $response) {
+		$data = json_decode($request->getBody()->getContents(), true);
+		
+		if (!isset($data['email'], $data['password'])) {
+			$response->getBody()->write(json_encode(['error' => 'Email and password required']));
+			return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
+		}
+		
+		$account = $this->accountRepository->getByEmail($data['email']);
+		
+		if (!$account || !$this->accountRepository->verifyPassword($data['email'], $data['password'])) {
+			$response->getBody()->write(json_encode(['error' => 'Invalid credentials']));
+			return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
+		}
+		
+		$authService = new \AnnaBozzi\TaxiApp\Services\AuthService();
+		$token = $authService->generateToken(['account_id' => $account->account_id, 'email' => $account->email]);
+		
+		$response->getBody()->write(json_encode(['token' => $token, 'account' => $account]));
+		return $response->withHeader('Content-Type', 'application/json');
 	}
 }

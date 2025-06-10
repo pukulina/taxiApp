@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace AnnaBozzi\TaxiApp\Models;
 
 class Account {
 	public string $account_id;
