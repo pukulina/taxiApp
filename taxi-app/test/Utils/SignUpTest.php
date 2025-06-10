@@ -1,10 +1,10 @@
 <?php
 
 use AnnaBozzi\TaxiApp\Application\GetAccount;
+use AnnaBozzi\TaxiApp\config\database;
 use AnnaBozzi\TaxiApp\Controllers\SignUp;
 use AnnaBozzi\TaxiApp\Repositories\AccountRepository;
 use PHPUnit\Framework\TestCase;
-use AnnaBozzi\TaxiApp\database;
 
 class SignUpTest extends TestCase
 {
